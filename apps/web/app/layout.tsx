@@ -1,30 +1,23 @@
-import { Geist, Geist_Mono } from "next/font/google"
+import { Vazirmatn } from "next/font/google";
 
-import "@workspace/ui/globals.css"
-import { Providers } from "@/components/providers"
+import "@workspace/ui/globals.css";
+import { Providers } from "@/components/providers";
 
-const fontSans = Geist({
-  subsets: ["latin"],
-  variable: "--font-sans",
-})
-
-const fontMono = Geist_Mono({
-  subsets: ["latin"],
-  variable: "--font-mono",
-})
+const fontVazirmatn = Vazirmatn({
+    subsets: ["latin"],
+    variable: "--font-vazirmatn",
+});
 
 export default function RootLayout({
-  children,
+    children,
 }: Readonly<{
-  children: React.ReactNode
+    children: React.ReactNode;
 }>) {
-  return (
-    <html lang="en" suppressHydrationWarning>
-      <body
-        className={`${fontSans.variable} ${fontMono.variable} font-sans antialiased `}
-      >
-        <Providers>{children}</Providers>
-      </body>
-    </html>
-  )
+    return (
+        <html lang="fa" dir="rtl" suppressHydrationWarning>
+            <body className={`${fontVazirmatn.variable} font-vazirmatn antialiased`}>
+                <Providers>{children}</Providers>
+            </body>
+        </html>
+    );
 }
