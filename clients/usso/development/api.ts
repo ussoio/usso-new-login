@@ -395,7 +395,6 @@ export interface AuthenticationConfig {
  * AuthenticatorAttestationResponse from WebAuthn.
  */
 export interface AuthenticatorAttestationResponse {
-    'attestationObject'?: string | null;
     /**
      * Base64url-encoded client data
      */
@@ -404,6 +403,7 @@ export interface AuthenticatorAttestationResponse {
      * Base64url-encoded authenticator data
      */
     'authenticatorData': string;
+    'attestationObject'?: string | null;
     'signature'?: string | null;
     'userHandle'?: string | null;
 }
@@ -1090,6 +1090,18 @@ export interface ProfileSchema {
 export interface ProfileUpdateSchema {
     'meta_data'?: { [key: string]: any; } | null;
     'profile_data'?: { [key: string]: any; } | null;
+}
+export interface PublicTenantConfig {
+    'branding'?: BrandingModel;
+    'legal'?: LegalModel;
+    'default_redirect_url'?: string;
+    'auth'?: AuthenticationConfig;
+    /**
+     * List of OAuth2 provider names
+     */
+    'integration'?: Array<string>;
+    'workspace'?: WorkspaceConfig;
+    'registration'?: RegistrationConfig;
 }
 export interface QRCodeResponse {
     'qr_token': string;
@@ -8932,6 +8944,36 @@ export const TenantApiAxiosParamCreator = function (configuration?: Configuratio
         },
         /**
          * 
+         * @summary Get Config
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getConfigApiSsoV1TenantsConfigGet: async (options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/api/sso/v1/tenants/config`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
          * @summary List Items
          * @param {number} [offset] 
          * @param {number} [limit] 
@@ -9095,6 +9137,18 @@ export const TenantApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
+         * @summary Get Config
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getConfigApiSsoV1TenantsConfigGet(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PublicTenantConfig>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getConfigApiSsoV1TenantsConfigGet(options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['TenantApi.getConfigApiSsoV1TenantsConfigGet']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
          * @summary List Items
          * @param {number} [offset] 
          * @param {number} [limit] 
@@ -9167,6 +9221,15 @@ export const TenantApiFactory = function (configuration?: Configuration, basePat
         },
         /**
          * 
+         * @summary Get Config
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getConfigApiSsoV1TenantsConfigGet(options?: RawAxiosRequestConfig): AxiosPromise<PublicTenantConfig> {
+            return localVarFp.getConfigApiSsoV1TenantsConfigGet(options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
          * @summary List Items
          * @param {number} [offset] 
          * @param {number} [limit] 
@@ -9226,6 +9289,16 @@ export class TenantApi extends BaseAPI {
      */
     public deleteItemApiSsoV1TenantsUidDelete(uid: string, options?: RawAxiosRequestConfig) {
         return TenantApiFp(this.configuration).deleteItemApiSsoV1TenantsUidDelete(uid, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Get Config
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    public getConfigApiSsoV1TenantsConfigGet(options?: RawAxiosRequestConfig) {
+        return TenantApiFp(this.configuration).getConfigApiSsoV1TenantsConfigGet(options).then((request) => request(this.axios, this.basePath));
     }
 
     /**

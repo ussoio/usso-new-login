@@ -6,9 +6,9 @@ AuthenticatorAttestationResponse from WebAuthn.
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**attestationObject** | **string** |  | [optional] [default to undefined]
 **clientDataJSON** | **string** | Base64url-encoded client data | [default to undefined]
 **authenticatorData** | **string** | Base64url-encoded authenticator data | [default to undefined]
+**attestationObject** | **string** |  | [optional] [default to undefined]
 **signature** | **string** |  | [optional] [default to undefined]
 **userHandle** | **string** |  | [optional] [default to undefined]
 
@@ -18,9 +18,9 @@ Name | Type | Description | Notes
 import { AuthenticatorAttestationResponse } from './api';
 
 const instance: AuthenticatorAttestationResponse = {
-    attestationObject,
     clientDataJSON,
     authenticatorData,
+    attestationObject,
     signature,
     userHandle,
 };

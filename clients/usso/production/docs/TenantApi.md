@@ -6,6 +6,7 @@ All URIs are relative to *http://localhost*
 |------------- | ------------- | -------------|
 |[**createItemApiSsoV1TenantsPost**](#createitemapissov1tenantspost) | **POST** /api/sso/v1/tenants | Create Item|
 |[**deleteItemApiSsoV1TenantsUidDelete**](#deleteitemapissov1tenantsuiddelete) | **DELETE** /api/sso/v1/tenants/{uid} | Delete Item|
+|[**getConfigApiSsoV1TenantsConfigGet**](#getconfigapissov1tenantsconfigget) | **GET** /api/sso/v1/tenants/config | Get Config|
 |[**listItemsApiSsoV1TenantsGet**](#listitemsapissov1tenantsget) | **GET** /api/sso/v1/tenants | List Items|
 |[**retrieveItemApiSsoV1TenantsUidGet**](#retrieveitemapissov1tenantsuidget) | **GET** /api/sso/v1/tenants/{uid} | Retrieve Item|
 |[**updateItemApiSsoV1TenantsUidPatch**](#updateitemapissov1tenantsuidpatch) | **PATCH** /api/sso/v1/tenants/{uid} | Update Item|
@@ -110,6 +111,49 @@ No authorization required
 |-------------|-------------|------------------|
 |**200** | Successful Response |  -  |
 |**422** | Validation Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **getConfigApiSsoV1TenantsConfigGet**
+> PublicTenantConfig getConfigApiSsoV1TenantsConfigGet()
+
+
+### Example
+
+```typescript
+import {
+    TenantApi,
+    Configuration
+} from './api';
+
+const configuration = new Configuration();
+const apiInstance = new TenantApi(configuration);
+
+const { status, data } = await apiInstance.getConfigApiSsoV1TenantsConfigGet();
+```
+
+### Parameters
+This endpoint does not have any parameters.
+
+
+### Return type
+
+**PublicTenantConfig**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**200** | Successful Response |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

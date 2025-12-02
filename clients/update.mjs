@@ -3,7 +3,7 @@ import { writeFile, readFile } from "fs/promises";
 import path from "node:path";
 import { $ } from "bun";
 
-const SCOPE = "@ice";
+const SCOPE = "@workspace";
 const VERSION = "0.0.1";
 
 // Get API Gateway URL from environment variable

@@ -85,6 +85,7 @@ docs/ProfileApi.md
 docs/ProfileCreateSchema.md
 docs/ProfileSchema.md
 docs/ProfileUpdateSchema.md
+docs/PublicTenantConfig.md
 docs/QRCodeResponse.md
 docs/QRLoginRequest.md
 docs/ReferralCodeApi.md

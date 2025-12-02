@@ -1,5 +1,5 @@
 {
-  "name": "@ice/usso",
+  "name": "@workspace/usso",
   "version": "0.0.1",
   "private": true,
   "type": "module",
@@ -8,5 +8,11 @@
     ".": "./production/index.ts",
     "./development": "./development/index.ts",
     "./production": "./production/index.ts"
+  },
+  "peerDependencies": {
+    "axios": "^1.0.0"
+  },
+  "devDependencies": {
+    "axios": "^1.13.2"
   }
 }
