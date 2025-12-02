@@ -1,0 +1,17 @@
+[
+    {
+        "name": "usso",
+        "clients": [
+            {
+                "environment": "production",
+                "openapi": "{{API_GATEWAY_URL}}/api/sso/v1/openapi.json",
+                "basePath": ""
+            },
+            {
+                "environment": "development",
+                "openapi": "{{API_GATEWAY_URL}}/api/sso/v1/openapi.json",
+                "basePath": "{{API_GATEWAY_URL}}"
+            }
+        ]
+    }
+]
