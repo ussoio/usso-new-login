@@ -36,7 +36,9 @@ const validationSchema = Yup.object({
 export function IdentifierStep() {
     const { setIdentifier, error } = useAuthStore();
     const loginMutation = useLogin();
+
     const altchaRef = useRef<AltchaRef>(null);
+
     const [captchaVerified, setCaptchaVerified] = useState(false);
     const [captchaError, setCaptchaError] = useState<string | null>(null);
 
