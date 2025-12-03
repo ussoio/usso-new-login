@@ -10,13 +10,7 @@ import { OAuthButtons } from "./oauth-buttons";
 import { LoginComplete } from "./login-complete";
 import { AuthSecret } from "@/lib/api";
 import { cn } from "@workspace/ui/lib/utils";
-import {
-    Card,
-    CardContent,
-    CardDescription,
-    CardHeader,
-    CardTitle,
-} from "@workspace/ui/components/card";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@workspace/ui/components/card";
 import { Button } from "@workspace/ui/components/button";
 import { ArrowRight } from "lucide-react";
 
@@ -81,17 +75,10 @@ export function LoginFlow({ className }: LoginFlowProps) {
 
             case AuthSecret.EmailOtp:
             case AuthSecret.PhoneOtp:
-                return (
-                    <OtpForm
-                        method={method}
-                        onBack={() => setSelectedMethod(null as any)}
-                    />
-                );
+                return <OtpForm method={method} onBack={() => setSelectedMethod(null as any)} />;
 
             case AuthSecret.MagicLink:
-                return (
-                    <MagicLinkForm onBack={() => setSelectedMethod(null as any)} />
-                );
+                return <MagicLinkForm onBack={() => setSelectedMethod(null as any)} />;
 
             case AuthSecret.Oauth:
                 return <OAuthButtons onBack={() => setSelectedMethod(null as any)} />;
@@ -99,14 +86,8 @@ export function LoginFlow({ className }: LoginFlowProps) {
             default:
                 return (
                     <div className="text-center">
-                        <p className="text-muted-foreground">
-                            این روش احراز هویت هنوز پیاده‌سازی نشده است
-                        </p>
-                        <Button
-                            variant="ghost"
-                            onClick={() => setSelectedMethod(null as any)}
-                            className="mt-4"
-                        >
+                        <p className="text-muted-foreground">این روش احراز هویت هنوز پیاده‌سازی نشده است</p>
+                        <Button variant="ghost" onClick={() => setSelectedMethod(null as any)} className="mt-4">
                             <ArrowRight className="ml-2 size-4" />
                             بازگشت
                         </Button>
@@ -173,4 +154,3 @@ export function LoginFlow({ className }: LoginFlowProps) {
         </div>
     );
 }
-
