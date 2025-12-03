@@ -1,0 +1,22 @@
+{
+    "name": "@workspace/fonts",
+    "version": "1.0.0",
+    "description": "Shared font assets for the monorepo.",
+    "main": "/src/index.js",
+    "type": "module",
+    "files": [
+        "src"
+    ],
+    "keywords": [
+        "fonts",
+        "assets",
+        "monorepo"
+    ],
+    "author": "",
+    "license": "MIT",
+    "dependencies": {
+        "next": "catalog:next",
+        "react": "catalog:next",
+        "react-dom": "catalog:next"
+    }
+}

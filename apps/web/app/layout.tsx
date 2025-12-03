@@ -1,12 +1,7 @@
-import { Vazirmatn } from "next/font/google";
+import { vazirmatn } from "@workspace/fonts";
 
 import "@workspace/ui/globals.css";
 import { Providers } from "@/components/providers";
-
-const fontVazirmatn = Vazirmatn({
-    subsets: ["latin"],
-    variable: "--font-vazirmatn",
-});
 
 export default function RootLayout({
     children,
@@ -15,7 +10,7 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="fa" dir="rtl" suppressHydrationWarning>
-            <body className={`${fontVazirmatn.variable} font-vazirmatn antialiased`}>
+            <body className={`${vazirmatn.variable} font-vazirmatn antialiased`}>
                 <Providers>{children}</Providers>
             </body>
         </html>
