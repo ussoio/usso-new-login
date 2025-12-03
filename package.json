@@ -5,6 +5,8 @@
     "scripts": {
         "build": "turbo build",
         "dev": "turbo dev",
+        "dev:up": "docker compose -f docker-compose.dev.yml up --build",
+        "dev:down": "docker compose -f docker-compose.dev.yml down",
         "lint": "turbo lint",
         "format": "prettier --write \"**/*.{ts,tsx,md}\"",
         "clients:update": "bun run clients/update.mjs"
