@@ -1,5 +1,5 @@
 services:
-    sso-dev:
+    auth-dev:
         build:
             context: .
             dockerfile: Dockerfile.dev
@@ -17,11 +17,11 @@ services:
         labels:
             - "traefik.enable=true"
 
-            - "traefik.http.routers.sso-dev.rule=Host(`sso-dev.uln.me`)"
-            - "traefik.http.routers.sso-dev.entrypoints=websecure"
-            - "traefik.http.routers.sso-dev.tls=true"
-            - "traefik.http.services.sso-dev.loadbalancer.server.port=8080"
-            - "traefik.http.routers.sso-dev.service=sso-dev"
+            - "traefik.http.routers.auth-dev.rule=Host(`auth-dev.uln.me`)"
+            - "traefik.http.routers.auth-dev.entrypoints=websecure"
+            - "traefik.http.routers.auth-dev.tls=true"
+            - "traefik.http.services.auth-dev.loadbalancer.server.port=8080"
+            - "traefik.http.routers.auth-dev.service=auth-dev"
 
 networks:
     traefik-net:
