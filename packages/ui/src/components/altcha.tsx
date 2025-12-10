@@ -20,6 +20,8 @@ export interface AltchaProps {
     verifyUrl?: string;
     /** Additional class name */
     className?: string;
+    /** Credentials for the widget */
+    credentials?: string | "omit";
 }
 
 export interface AltchaRef {
@@ -32,7 +34,7 @@ export interface AltchaRef {
  * Tailwind-compatible version
  */
 const Altcha = forwardRef<AltchaRef, AltchaProps>((props, ref) => {
-    const { onStateChange, challengeUrl, verifyUrl, className } = props;
+    const { onStateChange, challengeUrl, verifyUrl, className, credentials } = props;
     const widgetRef = useRef<HTMLElement>(null);
     const [value, setValue] = useState<string | null>(null);
     const [isLoaded, setIsLoaded] = useState<boolean>(false);
@@ -40,7 +42,7 @@ const Altcha = forwardRef<AltchaRef, AltchaProps>((props, ref) => {
     // Dynamically import altcha only on client side to avoid SSR issues
     useEffect(() => {
         if (typeof window !== "undefined") {
-            import("altcha").then(() => {
+            import("powcha").then(() => {
                 setIsLoaded(true);
             });
         }
@@ -91,6 +93,7 @@ const Altcha = forwardRef<AltchaRef, AltchaProps>((props, ref) => {
     }
 
     return React.createElement("altcha-widget", {
+        credentials: credentials,
         ref: widgetRef,
         style: altchaTheme,
         className,

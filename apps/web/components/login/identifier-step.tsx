@@ -43,6 +43,7 @@ export function IdentifierStep() {
     const [captchaError, setCaptchaError] = useState<string | null>(null);
 
     const handleCaptchaStateChange = (event: AltchaStateChangeEvent) => {
+        console.log(event);
         const { state } = event.detail;
         if (state === "verified") {
             setCaptchaVerified(true);
@@ -112,6 +113,7 @@ export function IdentifierStep() {
                         onStateChange={handleCaptchaStateChange}
                         challengeUrl={`${process.env.NEXT_PUBLIC_USSO_URL || ""}/api/sso/v1/captcha/challenge`}
                         verifyUrl={`${process.env.NEXT_PUBLIC_USSO_URL || ""}/api/sso/v1/captcha/verify`}
+                        credentials="include"
                     />
                     {captchaError && <FieldDescription className="text-destructive">{captchaError}</FieldDescription>}
                 </Field>
