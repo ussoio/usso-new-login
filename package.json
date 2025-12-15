@@ -15,6 +15,7 @@
         "@openapitools/openapi-generator-cli": "^2.25.2",
         "@workspace/eslint-config": "workspace:*",
         "@workspace/typescript-config": "workspace:*",
+        "eslint": "^9.32.0",
         "prettier": "^3.6.2",
         "shadcn": "^3.5.0",
         "turbo": "^2.5.5",

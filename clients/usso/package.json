@@ -8,11 +8,5 @@
     ".": "./production/index.ts",
     "./development": "./development/index.ts",
     "./production": "./production/index.ts"
-  },
-  "peerDependencies": {
-    "axios": "^1.0.0"
-  },
-  "devDependencies": {
-    "axios": "^1.13.2"
   }
 }

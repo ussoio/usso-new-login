@@ -24,6 +24,7 @@ for (const { name, clients } of clientsConfig) {
         console.log(openapi, basePath);
         const outDir = path.join("clients", name, environment);
 
+        // --log-to-stderr 2>/dev/null
         try {
             // Ensure output directory exists
             await $`mkdir -p ${outDir}`;
@@ -33,7 +34,6 @@ for (const { name, clients } of clientsConfig) {
             -i ${openapi} \
             -o ${outDir} \
             --skip-validate-spec \
-            --log-to-stderr 2>/dev/null
             `;
             console.log(`🔨 Openapi client "${name}" for "${environment}" generated`);
         } catch (err) {
