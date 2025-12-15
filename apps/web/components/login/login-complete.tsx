@@ -5,21 +5,23 @@ import { Button } from "@workspace/ui/components/button";
 import { Field, FieldGroup } from "@workspace/ui/components/field";
 import { CheckCircle } from "lucide-react";
 import { useEffect } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 
 export function LoginComplete() {
     const { loginResponse, reset } = useAuthStore();
     const router = useRouter();
+    const searchParams = useSearchParams();
+
+    const returnTo = searchParams.get("return_to") || "/";
 
     // Redirect after successful login
     useEffect(() => {
         const timer = setTimeout(() => {
-            // Redirect to home or dashboard
-            router.push("/");
-        }, 2000);
+            router.push(returnTo);
+        }, 1500);
 
         return () => clearTimeout(timer);
-    }, [router]);
+    }, [router, returnTo]);
 
     return (
         <FieldGroup>
@@ -47,9 +49,9 @@ export function LoginComplete() {
                 <Button
                     type="button"
                     className="w-full"
-                    onClick={() => router.push("/")}
+                    onClick={() => router.push(returnTo)}
                 >
-                    رفتن به داشبورد
+                    ادامه
                 </Button>
             </Field>
         </FieldGroup>
